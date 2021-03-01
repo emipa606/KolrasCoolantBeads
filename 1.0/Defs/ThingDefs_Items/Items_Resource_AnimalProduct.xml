@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <ThingDef ParentName="EggUnfertBase">
+    <defName>CoolantBeadEggUnnfertilized</defName>
+    <label>coolant bead egg (unfert.)</label>
+    <description>An unfertilized chicken egg. It can be eaten raw, but it's much, much better cooked.</description>
+    <graphicData>
+      <color>(228,185,135)</color>
+    </graphicData>
+    <statBases>
+      <MarketValue>7.0</MarketValue>
+    </statBases>
+  </ThingDef>
+  <ThingDef ParentName="EggFertBase">
+    <defName>CoolantBeadEggFertilized</defName>
+    <label>coolant bead egg (fert.)</label>
+    <description>.</description>
+    <graphicData>
+      <color>(100, 255, 255)</color>
+    </graphicData>
+    <statBases>
+      <MarketValue>1.0</MarketValue>
+    </statBases>
+    <comps>
+      <li Class="CompProperties_Hatcher">
+        <hatcherDaystoHatch>.0001</hatcherDaystoHatch>
+        <hatcherPawn>Coolant_Bead</hatcherPawn>
+      </li>
+    </comps>
+  </ThingDef>
+</Defs>

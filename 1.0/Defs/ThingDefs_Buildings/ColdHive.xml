@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <ThingDef ParentName="BuildingNaturalBase">
+    <defName>SlimeHive</defName>
+    <label>Slime!hive</label>
+    <description>SlimeyHivy.</description>
+    <category>Building</category>
+    <thingClass>Hive</thingClass>
+    <graphicData>
+      <texPath>Things/Buildings/SlimeHive</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(4,4)</drawSize>
+    </graphicData>
+    <rotatable>false</rotatable>
+    <altitudeLayer>Building</altitudeLayer>
+    <passability>PassThroughOnly</passability>
+    <pathCost>50</pathCost>
+    <constructEffect>ConstructDirt</constructEffect>
+    <tickerType>Normal</tickerType>
+    <fillPercent>1</fillPercent>
+    <statBases>
+      <MaxHitPoints>130</MaxHitPoints>
+      <Flammability>1.0</Flammability>
+    </statBases>
+    <selectable>true</selectable>
+    <costList>
+      <Leather_CoolantBead>5</Leather_CoolantBead>
+    </costList>
+    <size>(4,4)</size>
+    <soundImpactDefault>BulletImpact_Ground</soundImpactDefault>
+    <leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
+    <resourcesFractionWhenDeconstructed>0</resourcesFractionWhenDeconstructed>
+    <drawPlaceWorkersWhileSelected>true</drawPlaceWorkersWhileSelected>
+    <comps>
+      <li Class="CompProperties_Spawner">
+        <thingToSpawn>InsectJelly</thingToSpawn>
+        <spawnCount>20</spawnCount>
+        <spawnIntervalRange>
+          <min>24000</min>
+          <max>25000</max>
+        </spawnIntervalRange>
+        <spawnMaxAdjacent>500</spawnMaxAdjacent>
+        <spawnForbidden>true</spawnForbidden>
+        <saveKeysPrefix>jelly</saveKeysPrefix>
+      </li>
+      <li Class="CompProperties_Spawner">
+        <thingToSpawn>CoolantBeadEggFertilized</thingToSpawn>
+        <spawnCount>3</spawnCount>
+        <spawnIntervalRange>
+          <min>24000</min>
+          <max>25000</max>
+        </spawnIntervalRange>
+        <spawnMaxAdjacent>10</spawnMaxAdjacent>
+        <spawnForbidden>true</spawnForbidden>
+        <saveKeysPrefix>egg</saveKeysPrefix>
+      </li>
+      <li Class="CompProperties_HeatPusher">
+        <compClass>CompHeatPusher</compClass>
+        <heatPerSecond>-15</heatPerSecond>
+        <heatPushMinTemperature>-15</heatPushMinTemperature>
+      </li>
+    </comps>
+    <designationCategory>Misc</designationCategory>
+    <placeWorkers>
+      <li>PlaceWorker_OnSteamGeyser</li>
+    </placeWorkers>
+  </ThingDef>
+</Defs>
