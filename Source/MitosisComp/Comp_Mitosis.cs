@@ -33,14 +33,12 @@ namespace MitosisComp
         public override void CompTick()
         {
             base.CompTick();
-            var flag = parent.Map != null;
-            if (!flag)
+            if (parent.Map == null)
             {
                 return;
             }
 
-            var flag2 = ticksSinceLastSplit >= Props.splittingTimer * GetTemperatureMultiplier() && CanSplit();
-            if (flag2)
+            if (ticksSinceLastSplit >= Props.splittingTimer * GetTemperatureMultiplier() && CanSplit())
             {
                 SpawnPawn();
                 ticksSinceLastSplit = 0;
@@ -62,9 +60,8 @@ namespace MitosisComp
 
         private float GetTemperatureMultiplier()
         {
-            var flag = parent.AmbientTemperature >= 0f;
             float result;
-            if (flag)
+            if (parent.AmbientTemperature >= 0f)
             {
                 result = 1f - (Props.heatMultiplier * (parent.AmbientTemperature - Props.temperatureOffset));
             }
