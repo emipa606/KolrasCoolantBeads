@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Defs>
+  <BodyPartDef>
+    <defName>CoolantBeadMainBody</defName>
+    <label>Hood</label>
+    <hitPoints>30</hitPoints>
+    <frostbiteVulnerability>0.1</frostbiteVulnerability>
+    <skinCovered>true</skinCovered>
+    <tags>
+      <li>HearingSource</li>
+      <li>TalkingSource</li>
+      <li>ConsciousnessSource</li>
+      <li>MovingLimbCore</li>
+      <li>ManipulationLimbCore</li>
+    </tags>
+  </BodyPartDef>
+  <BodyPartDef>
+    <defName>CoolantSac</defName>
+    <label>Coolant Sac</label>
+    <hitPoints>20</hitPoints>
+    <frostbiteVulnerability>0.1</frostbiteVulnerability>
+    <bleedRate>5</bleedRate>
+    <skinCovered>false</skinCovered>
+    <tags>
+      <li>BloodPumpingSource</li>
+      <li>BloodFiltrationSource</li>
+      <li>MetabolismSource</li>
+      <li>BreathingSource</li>
+    </tags>
+  </BodyPartDef>
+</Defs>

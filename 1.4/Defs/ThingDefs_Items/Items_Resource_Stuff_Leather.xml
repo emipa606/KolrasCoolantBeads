@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <ThingDef ParentName="LeatherBase">
+    <defName>Leather_CoolantBead</defName>
+    <label>Coolant Bead leather</label>
+    <description>Tanned, dried, scraped Coolant Bead Membrane. Such a useful creature, the coolant bead produces a fine leather upon death with good thermal insulation to both heat and cold.</description>
+    <graphicData>
+      <color>(100, 255, 255)</color>
+    </graphicData>
+    <statBases>
+      <MarketValue>20</MarketValue>
+      <StuffPower_Insulation_Cold>30</StuffPower_Insulation_Cold>
+      <StuffPower_Insulation_Heat>30</StuffPower_Insulation_Heat>
+    </statBases>
+    <stuffProps>
+      <color>(100, 255, 255)</color>
+      <commonality>0.01</commonality>
+    </stuffProps>
+  </ThingDef>
+</Defs>

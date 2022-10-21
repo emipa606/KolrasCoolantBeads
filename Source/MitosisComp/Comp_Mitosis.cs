@@ -2,83 +2,82 @@
 using RimWorld;
 using Verse;
 
-namespace MitosisComp
+namespace MitosisComp;
+
+public class Comp_Mitosis : ThingComp
 {
-    public class Comp_Mitosis : ThingComp
+    private int ticksSinceLastSplit;
+
+    private CompProperties_Mitosis Props => (CompProperties_Mitosis)props;
+
+    public override void PostExposeData()
     {
-        private int ticksSinceLastSplit;
+        base.PostExposeData();
+        Scribe_Values.Look(ref ticksSinceLastSplit, "ticksSinceLastSplit");
+    }
 
-        private CompProperties_Mitosis Props => (CompProperties_Mitosis) props;
-
-        public override void PostExposeData()
+    public override string CompInspectStringExtra()
+    {
+        if (!Prefs.DevMode)
         {
-            base.PostExposeData();
-            Scribe_Values.Look(ref ticksSinceLastSplit, "ticksSinceLastSplit");
+            return string.Empty;
         }
 
-        public override string CompInspectStringExtra()
+        var text = $"Last Mitosis Split: {ticksSinceLastSplit} ticks";
+        text = $"{text}\nWill split at: {Props.splittingTimer * GetTemperatureMultiplier()} ticks";
+        text = $"{text}\nCan Split:{CanSplit()}";
+
+        return text;
+    }
+
+    public override void CompTick()
+    {
+        base.CompTick();
+        if (parent.Map == null)
         {
-            if (!Prefs.DevMode)
-            {
-                return string.Empty;
-            }
-
-            var text = "Last Mitosis Split: " + ticksSinceLastSplit + " ticks";
-            text = text + "\nWill split at: " + (Props.splittingTimer * GetTemperatureMultiplier()) + " ticks";
-            text = text + "\nCan Split:" + CanSplit();
-
-            return text;
+            return;
         }
 
-        public override void CompTick()
+        if (ticksSinceLastSplit >= Props.splittingTimer * GetTemperatureMultiplier() && CanSplit())
         {
-            base.CompTick();
-            if (parent.Map == null)
-            {
-                return;
-            }
+            SpawnPawn();
+            ticksSinceLastSplit = 0;
+        }
+        else
+        {
+            ticksSinceLastSplit++;
+        }
+    }
 
-            if (ticksSinceLastSplit >= Props.splittingTimer * GetTemperatureMultiplier() && CanSplit())
-            {
-                SpawnPawn();
-                ticksSinceLastSplit = 0;
-            }
-            else
-            {
-                ticksSinceLastSplit++;
-            }
+    private bool CanSplit()
+    {
+        var pawns = from p in parent.Map.mapPawns?.AllPawns
+            where p != null && p.def == Props.pawnKind.race
+            select p;
+        var num = pawns.Count();
+        return Props.countLimit > num;
+    }
+
+    private float GetTemperatureMultiplier()
+    {
+        float result;
+        if (parent.AmbientTemperature >= 0f)
+        {
+            result = 1f - (Props.heatMultiplier * (parent.AmbientTemperature - Props.temperatureOffset));
+        }
+        else
+        {
+            result = 1f - (Props.coldMultiplier * (parent.AmbientTemperature - Props.temperatureOffset));
         }
 
-        private bool CanSplit()
-        {
-            var pawns = from p in parent.Map.mapPawns?.AllPawns
-                where p != null && p.def == Props.pawnKind.race
-                select p;
-            var num = pawns.Count();
-            return Props.countLimit > num;
-        }
+        return result;
+    }
 
-        private float GetTemperatureMultiplier()
-        {
-            float result;
-            if (parent.AmbientTemperature >= 0f)
-            {
-                result = 1f - (Props.heatMultiplier * (parent.AmbientTemperature - Props.temperatureOffset));
-            }
-            else
-            {
-                result = 1f - (Props.coldMultiplier * (parent.AmbientTemperature - Props.temperatureOffset));
-            }
-
-            return result;
-        }
-
-        private void SpawnPawn()
-        {
-            var request = new PawnGenerationRequest(Props.pawnKind, parent.Faction, PawnGenerationContext.NonPlayer, -1,
-                true, true, false, false, true, false, 1f, false, true, true, false);
-            var newThing = PawnGenerator.GeneratePawn(request);
-            GenSpawn.Spawn(newThing, parent.Position, parent.Map);
-        }
+    private void SpawnPawn()
+    {
+        var request = new PawnGenerationRequest(Props.pawnKind, parent.Faction, PawnGenerationContext.NonPlayer, -1,
+            true, true, false, false, true, 1f, false, true, true, false);
+        var newThing = PawnGenerator.GeneratePawn(request);
+        GenSpawn.Spawn(newThing, parent.Position, parent.Map);
     }
 }
