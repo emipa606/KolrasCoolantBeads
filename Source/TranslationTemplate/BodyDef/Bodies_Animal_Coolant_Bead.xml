@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  <!-- EN: Coolant Bead -->
+  <Coolant_Bead_Body.label>Coolant Bead</Coolant_Bead_Body.label>
+  <!-- EN: left coolant sac -->
+  <Coolant_Bead_Body.corePart.parts.left_coolant_sac.customLabel>left coolant sac</Coolant_Bead_Body.corePart.parts.left_coolant_sac.customLabel>
+  <!-- EN: right coolant sac -->
+  <Coolant_Bead_Body.corePart.parts.right_coolant_sac.customLabel>right coolant sac</Coolant_Bead_Body.corePart.parts.right_coolant_sac.customLabel>
+</LanguageData>

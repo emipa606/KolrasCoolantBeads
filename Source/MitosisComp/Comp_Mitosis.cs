@@ -24,8 +24,8 @@ public class Comp_Mitosis : ThingComp
         }
 
         var text = $"Last Mitosis Split: {ticksSinceLastSplit} ticks";
-        text = $"{text}\nWill split at: {Props.splittingTimer * GetTemperatureMultiplier()} ticks";
-        text = $"{text}\nCan Split:{CanSplit()}";
+        text = $"{text}\nWill split at: {Props.splittingTimer * getTemperatureMultiplier()} ticks";
+        text = $"{text}\nCan Split:{canSplit()}";
 
         return text;
     }
@@ -38,9 +38,9 @@ public class Comp_Mitosis : ThingComp
             return;
         }
 
-        if (ticksSinceLastSplit >= Props.splittingTimer * GetTemperatureMultiplier() && CanSplit())
+        if (ticksSinceLastSplit >= Props.splittingTimer * getTemperatureMultiplier() && canSplit())
         {
-            SpawnPawn();
+            spawnPawn();
             ticksSinceLastSplit = 0;
         }
         else
@@ -49,7 +49,7 @@ public class Comp_Mitosis : ThingComp
         }
     }
 
-    private bool CanSplit()
+    private bool canSplit()
     {
         var pawns = from p in parent.Map.mapPawns?.AllPawns
             where p != null && p.def == Props.pawnKind.race
@@ -58,7 +58,7 @@ public class Comp_Mitosis : ThingComp
         return Props.countLimit > num;
     }
 
-    private float GetTemperatureMultiplier()
+    private float getTemperatureMultiplier()
     {
         float result;
         if (parent.AmbientTemperature >= 0f)
@@ -73,7 +73,7 @@ public class Comp_Mitosis : ThingComp
         return result;
     }
 
-    private void SpawnPawn()
+    private void spawnPawn()
     {
         var request = new PawnGenerationRequest(Props.pawnKind, parent.Faction, PawnGenerationContext.NonPlayer, -1,
             true, true, false, false, true, 1f, false, true, true, false);

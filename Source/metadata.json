@@ -2,5 +2,13 @@
   "Continued": true,
   "CanAdd": "0",
   "CanRemove": "2",
-  "PreviewVersion": "1.5"
+  "PreviewVersion": "1.6",
+  "LastXmlCleaning": "2025-07-05T16:53:50.0586895+02:00",
+  "SocialImageSet": true,
+  "Patches": false,
+  "Defs": true,
+  "Assemblies": true,
+  "LinesOfCode": 3419.0,
+  "LinesOfXML": 10871.0,
+  "SearchTags": " interplanetary adoption"
 }

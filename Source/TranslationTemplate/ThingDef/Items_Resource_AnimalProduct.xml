@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  <!-- EN: coolant bead egg (fert.) -->
+  <CoolantBeadEggFertilized.label>coolant bead egg (fert.)</CoolantBeadEggFertilized.label>
+  <!-- EN: . -->
+  <CoolantBeadEggFertilized.description>.</CoolantBeadEggFertilized.description>
+  <!-- EN: coolant bead egg (unfert.) -->
+  <CoolantBeadEggUnfertilized.label>coolant bead egg (unfert.)</CoolantBeadEggUnfertilized.label>
+  <!-- EN: An unfertilized chicken egg. It can be eaten raw, but it's much, much better cooked. -->
+  <CoolantBeadEggUnfertilized.description>An unfertilized chicken egg. It can be eaten raw, but it's much, much better cooked.</CoolantBeadEggUnfertilized.description>
+</LanguageData>
