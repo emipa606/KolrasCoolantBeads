@@ -3,4 +3,24 @@
     <BuildType Name="Release" />
   </Configurations>
   <Project Path="MitosisComp/MitosisComp.csproj" />
+  <Folder Name="/.github/">
+    <File Path="../.github/copilot-instructions.md" />
+  </Folder>
+  <Folder Name="/XML/1.7/Defs/ThingDefs_Buildings/">
+    <File Path="../1.7/Defs/ThingDefs_Buildings/ColdHive.xml" />
+  </Folder>
+  <Folder Name="/XML/1.7/Defs/Bodies/">
+    <File Path="../1.7/Defs/Bodies/Bodies_Animal_Coolant_Bead.xml" />
+    <File Path="../1.7/Defs/Bodies/BodyParts_Animal.xml" />
+  </Folder>
+  <Folder Name="/XML/1.7/Defs/ThingDefs_Races/">
+    <File Path="../1.7/Defs/ThingDefs_Races/Races_Animal_Coolant_Bead.xml" />
+  </Folder>
+  <Folder Name="/XML/1.7/Defs/ThingDefs_Items/">
+    <File Path="../1.7/Defs/ThingDefs_Items/Items_Resource_AnimalProduct.xml" />
+    <File Path="../1.7/Defs/ThingDefs_Items/Items_Resource_Stuff_Leather.xml" />
+  </Folder>
+  <Folder Name="/XML/About/">
+    <File Path="../About/about.xml" />
+  </Folder>
 </Solution>
